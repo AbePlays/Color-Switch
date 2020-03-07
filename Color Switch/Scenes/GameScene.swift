@@ -21,6 +21,8 @@ class GameScene: SKScene {
         colorSwitch = SKSpriteNode(imageNamed: "ColorCircle")
         colorSwitch.size = CGSize(width: frame.size.width / 3, height: frame.size.width / 3)
         colorSwitch.position = CGPoint(x: frame.midX, y: frame.minY + colorSwitch.size.height)
+        colorSwitch.physicsBody = SKPhysicsBody(circleOfRadius: colorSwitch.size.width / 2)
+        colorSwitch.physicsBody?.categoryBitMask = PhysicsCategories.switchCategory
         addChild(colorSwitch)
         spawnBall()
     }
@@ -29,6 +31,8 @@ class GameScene: SKScene {
         let ball = SKSpriteNode(imageNamed: "ball")
         ball.size = CGSize(width: 30, height: 30)
         ball.position = CGPoint(x: frame.midX, y: frame.maxY)
+        ball.physicsBody = SKPhysicsBody(circleOfRadius: ball.size.width / 2)
+        ball.physicsBody?.categoryBitMask = PhysicsCategories.ballCategory
         addChild(ball)
     }
 }
