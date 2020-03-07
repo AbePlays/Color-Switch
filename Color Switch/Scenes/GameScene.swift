@@ -19,6 +19,7 @@ class GameScene: SKScene {
     
     func setupPhysics() {
         physicsWorld.gravity = CGVector(dx: 0, dy: -2)
+        physicsWorld.contactDelegate = self
     }
     
     func layoutScene() {
@@ -42,5 +43,16 @@ class GameScene: SKScene {
         ball.physicsBody?.contactTestBitMask = PhysicsCategories.switchCategory
         ball.physicsBody?.collisionBitMask = PhysicsCategories.none
         addChild(ball)
+    }
+}
+
+extension GameScene : SKPhysicsContactDelegate {
+    
+    func didBegin(_ contact: SKPhysicsContact) {
+        let contactMask = contact.bodyA.categoryBitMask | contact.bodyB.categoryBitMask
+        
+        if contactMask == PhysicsCategories.ballCategory | PhysicsCategories.switchCategory {
+            
+        }
     }
 }
