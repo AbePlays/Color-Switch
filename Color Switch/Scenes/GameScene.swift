@@ -8,9 +8,24 @@
 
 import SpriteKit
 
+enum PlayColors {
+    static let colors = [
+        UIColor(red: 231/255, green: 76/255, blue: 60/255, alpha: 1),
+        UIColor(red: 241/255, green: 196/255, blue: 15/255, alpha: 1),
+        UIColor(red: 46/255, green: 204/255, blue: 113/255, alpha: 1),
+        UIColor(red: 52/255, green: 152/255, blue: 219/255, alpha: 1)
+    ]
+}
+
+enum SwitchState : Int {
+    case red, yellow, green, blue
+}
+
 class GameScene: SKScene {
     
     var colorSwitch : SKSpriteNode!
+    var switchState = SwitchState.red
+    var currentColorIndex : Int?
     
     override func didMove(to view: SKView) {
         setupPhysics()
@@ -35,8 +50,10 @@ class GameScene: SKScene {
     }
     
     func spawnBall() {
-        let ball = SKSpriteNode(imageNamed: "ball")
-        ball.size = CGSize(width: 30, height: 30)
+        currentColorIndex = Int(arc4random_uniform(UInt32(4)))
+        let ball = SKSpriteNode(texture: SKTexture(imageNamed: "ball"), color: PlayColors.colors[currentColorIndex!], size: CGSize(width: 30, height: 30))
+        ball.colorBlendFactor = 1
+        ball.name = "Ball"
         ball.position = CGPoint(x: frame.midX, y: frame.maxY)
         ball.physicsBody = SKPhysicsBody(circleOfRadius: ball.size.width / 2)
         ball.physicsBody?.categoryBitMask = PhysicsCategories.ballCategory
