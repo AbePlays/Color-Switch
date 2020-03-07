@@ -31,14 +31,14 @@ class MenuScene: SKScene {
         playLabel.position = CGPoint(x: frame.midX, y: frame.midY)
         addChild(playLabel)
         
-        let highScoreLabel = SKLabelNode(text: "High Score :")
+        let highScoreLabel = SKLabelNode(text: "High Score : \(UserDefaults.standard.integer(forKey: "HighScore"))")
         highScoreLabel.fontName = "AvenirNext-Bold"
         highScoreLabel.fontSize = 40
         highScoreLabel.fontColor = .white
         highScoreLabel.position = CGPoint(x: frame.midX, y: frame.midY - highScoreLabel.frame.size.height*4)
         addChild(highScoreLabel)
         
-        let recentScoreLabel = SKLabelNode(text: "Recent Score : ")
+        let recentScoreLabel = SKLabelNode(text: "Recent Score : \(UserDefaults.standard.integer(forKey: "RecentScore"))")
         recentScoreLabel.fontName = "AvenirNext-Bold"
         recentScoreLabel.fontSize = 40
         recentScoreLabel.fontColor = .white
