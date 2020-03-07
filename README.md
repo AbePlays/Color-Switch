@@ -1,6 +1,6 @@
 # Color Switch
 
-<table>
+<table style={"border" : "none"}>
   <tr>
     <td>Home Screen</td>
      <td>Game Scren</td>
