@@ -1,7 +1,6 @@
 # Color Switch
 
-![Home Screen](HomeScreen.png)
-![Game Screen](GameScreen.png)
+![Home Screen](HomeScreen.png) ![Game Screen](GameScreen.png)
 
 ## Overview
 
