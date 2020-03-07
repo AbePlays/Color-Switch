@@ -19,7 +19,7 @@ class MenuScene: SKScene {
     func addLogo() {
         let logo = SKSpriteNode(imageNamed: "logo")
         logo.size = CGSize(width: frame.size.width/4, height: frame.size.width/4)
-        logo.position = CGPoint(x: frame.midX, y: frame.midY + logo.size.height / 4)
+        logo.position = CGPoint(x: frame.midX, y: frame.midY + frame.size.height/4)
         addChild(logo)
     }
     
