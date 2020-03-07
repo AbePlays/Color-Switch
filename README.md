@@ -1,6 +1,15 @@
 # Color Switch
 
-![Home Screen](HomeScreen.png) ![Game Screen](GameScreen.png)
+<table>
+  <tr>
+    <td>Home Screen</td>
+     <td>Game Scren</td>
+  </tr>
+  <tr>
+    <td><img src="HomeScreen.png" width=270 height=480></td>
+    <td><img src="GameScreen.png" width=270 height=480></td>
+  </tr>
+ </table>
 
 ## Overview
 
