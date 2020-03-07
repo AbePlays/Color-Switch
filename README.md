@@ -1,8 +1,8 @@
 # Color Switch
 
-<p float="left">
-  <img src="HomeScreen.png" width="400" margin="auto auto">
-  <img src="GameScreen.png" width="400" margin="auto auto">
+<p align="center">
+  <img src="HomeScreen.png" width="400">
+  <img src="GameScreen.png" width="400">
 </p>
 
 ## Overview
