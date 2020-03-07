@@ -13,7 +13,12 @@ class GameScene: SKScene {
     var colorSwitch : SKSpriteNode!
     
     override func didMove(to view: SKView) {
+        setupPhysics()
         layoutScene()
+    }
+    
+    func setupPhysics() {
+        physicsWorld.gravity = CGVector(dx: 0, dy: -2)
     }
     
     func layoutScene() {
@@ -23,6 +28,7 @@ class GameScene: SKScene {
         colorSwitch.position = CGPoint(x: frame.midX, y: frame.minY + colorSwitch.size.height)
         colorSwitch.physicsBody = SKPhysicsBody(circleOfRadius: colorSwitch.size.width / 2)
         colorSwitch.physicsBody?.categoryBitMask = PhysicsCategories.switchCategory
+        colorSwitch.physicsBody?.isDynamic = false
         addChild(colorSwitch)
         spawnBall()
     }
@@ -33,6 +39,8 @@ class GameScene: SKScene {
         ball.position = CGPoint(x: frame.midX, y: frame.maxY)
         ball.physicsBody = SKPhysicsBody(circleOfRadius: ball.size.width / 2)
         ball.physicsBody?.categoryBitMask = PhysicsCategories.ballCategory
+        ball.physicsBody?.contactTestBitMask = PhysicsCategories.switchCategory
+        ball.physicsBody?.collisionBitMask = PhysicsCategories.none
         addChild(ball)
     }
 }
