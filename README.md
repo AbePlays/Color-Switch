@@ -1,15 +1,9 @@
 # Color Switch
 
-<table style={"border" : "none"}>
-  <tr>
-    <td>Home Screen</td>
-     <td>Game Scren</td>
-  </tr>
-  <tr>
-    <td><img src="HomeScreen.png" width=270 height=480></td>
-    <td><img src="GameScreen.png" width=270 height=480></td>
-  </tr>
- </table>
+<p float="left">
+  <img src="HomeScreen.png">
+  <img src="GameScreen.png">
+</p>
 
 ## Overview
 
