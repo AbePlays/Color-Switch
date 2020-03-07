@@ -61,6 +61,24 @@ class GameScene: SKScene {
         ball.physicsBody?.collisionBitMask = PhysicsCategories.none
         addChild(ball)
     }
+    
+    func turnWheel() {
+        if let newState = SwitchState(rawValue: switchState.rawValue + 1) {
+            switchState = newState
+        } else {
+            switchState = .red
+        }
+        
+        colorSwitch.run(SKAction.rotate(byAngle: .pi/2, duration: 0.25))
+    }
+    
+    func gameOver() {
+        print("Game Over!")
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        turnWheel()
+    }
 }
 
 extension GameScene : SKPhysicsContactDelegate {
@@ -69,7 +87,17 @@ extension GameScene : SKPhysicsContactDelegate {
         let contactMask = contact.bodyA.categoryBitMask | contact.bodyB.categoryBitMask
         
         if contactMask == PhysicsCategories.ballCategory | PhysicsCategories.switchCategory {
-            
+            if let ball = contact.bodyA.node?.name == "Ball" ? contact.bodyA.node as? SKSpriteNode : contact.bodyB.node as? SKSpriteNode {
+                if currentColorIndex == switchState.rawValue {
+                    print("Correct!")
+                    ball.run(SKAction.fadeOut(withDuration: 0.25), completion: {
+                        ball.removeFromParent()
+                        self.spawnBall()
+                    })
+                } else {
+                    gameOver()
+                }
+            }
         }
     }
 }
